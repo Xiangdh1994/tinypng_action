@@ -22,6 +22,15 @@ jobs:
     - name: compress
       run: |
         python compress.py
+    - name: Commit files
+      run: |
+        git config --local user.email "artwl@outlook.com"
+        git config --local user.name "artwl"
+        git commit -m "compressed" -a
+    - name: Push changes
+      uses: artwl/tinypng_action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         
   resize:
     runs-on: ubuntu-latest
@@ -42,4 +51,13 @@ jobs:
     - name: resize
       run: |
         python resize.py
+    - name: Commit files
+      run: |
+        git config --local user.email "artwl@outlook.com"
+        git config --local user.name "artwl"
+        git commit -m "resized" -a
+    - name: Push changes
+      uses: artwl/tinypng_action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         
