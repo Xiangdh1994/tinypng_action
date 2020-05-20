@@ -1,0 +1,45 @@
+name: TinyPng
+
+on: push
+
+jobs:
+  compress:
+    runs-on: ubuntu-latest
+    
+    if: "contains(github.event.head_commit.message, 'compress')"
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.x' 
+        architecture: 'x64'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install tinify
+    - name: compress
+      run: |
+        python compress.py
+        
+  resize:
+    runs-on: ubuntu-latest
+    
+    if: "contains(github.event.head_commit.message, 'resize')"
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.x' 
+        architecture: 'x64'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install tinify
+    - name: resize
+      run: |
+        python resize.py
+        
