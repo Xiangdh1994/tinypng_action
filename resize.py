@@ -7,6 +7,9 @@ srcDir = "./src"
 
 desDir = "./resized"
 
+if not os.path.exists(desDir):
+    os.makedirs(desDir)
+
 imgs = os.listdir(srcDir)
 for img in imgs:
     if ".jpeg" in img or ".jpg" in img or ".png" in img:
