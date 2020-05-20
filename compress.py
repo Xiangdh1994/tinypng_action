@@ -23,11 +23,9 @@ def resize(w, h):
                     width=w,
                     height=h
                 )
-                pass
-                #resized.to_file("%s/%s" % (desDir, img))
+                resized.to_file("%s/%s" % (desDir, img))
             else:
-                pass
-                #source.to_file("%s/%s" % (desDir, img))
+                source.to_file("%s/%s" % (desDir, img))
     print("done")
 
 if __name__ == "__main__":
