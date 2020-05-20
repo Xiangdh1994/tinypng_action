@@ -5,15 +5,15 @@ on: push
 jobs:
   compress:
     runs-on: ubuntu-latest
-    
+
     if: "contains(github.event.head_commit.message, 'compress')"
-    
+
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.x
       uses: actions/setup-python@v1
       with:
-        python-version: '3.x' 
+        python-version: '3.x'
         architecture: 'x64'
     - name: Install dependencies
       run: |
@@ -21,7 +21,7 @@ jobs:
         pip install tinify
     - name: compress
       run: |
-        python compress.py
+        python compress.py ${{ github.event.head_commit.message }}
     - name: Commit files
       run: |
         git config --local user.email "artwl@outlook.com"
@@ -32,34 +32,4 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        
-  resize:
-    runs-on: ubuntu-latest
-    
-    if: "contains(github.event.head_commit.message, 'resize')"
-    
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python 3.x
-      uses: actions/setup-python@v1
-      with:
-        python-version: '3.x' 
-        architecture: 'x64'
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install tinify
-    - name: resize
-      run: |
-        python resize.py
-    - name: Commit files
-      run: |
-        git config --local user.email "artwl@outlook.com"
-        git config --local user.name "artwl"
-        git add .
-        git commit -m "resized" -a
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        
+
