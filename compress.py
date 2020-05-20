@@ -23,17 +23,25 @@ def resize(w, h):
                     width=w,
                     height=h
                 )
-                resized.to_file("%s/%s" % (desDir, img))
+                pass
+                #resized.to_file("%s/%s" % (desDir, img))
             else:
-                source.to_file("%s/%s" % (desDir, img))
+                pass
+                #source.to_file("%s/%s" % (desDir, img))
     print("done")
 
 if __name__ == "__main__":
     paramsCount = len(sys.argv)
+    c = ""
     w = 0
     h = 0
-    if paramsCount > 3:
-        w = int(sys.argv[2])
-        h = int(sys.argv[3])
-    resize(w, h)
+    if paramsCount > 1:
+        c = sys.argv[1]
+    if c == "compress":
+        if paramsCount > 3:
+            if sys.argv[2].isdigit():
+                w = int(sys.argv[2])
+            if sys.argv[3].isdigit():
+                h = int(sys.argv[3])
+        resize(w, h)
 
