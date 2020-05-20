@@ -28,7 +28,7 @@ jobs:
         git config --local user.name "artwl"
         git commit -m "compressed" -a
     - name: Push changes
-      uses: artwl/tinypng_action@master
+      uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         
@@ -57,7 +57,7 @@ jobs:
         git config --local user.name "artwl"
         git commit -m "resized" -a
     - name: Push changes
-      uses: artwl/tinypng_action@master
+      uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         
