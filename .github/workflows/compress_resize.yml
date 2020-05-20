@@ -26,6 +26,7 @@ jobs:
       run: |
         git config --local user.email "artwl@outlook.com"
         git config --local user.name "artwl"
+        git add .
         git commit -m "compressed" -a
     - name: Push changes
       uses: ad-m/github-push-action@master
@@ -55,6 +56,7 @@ jobs:
       run: |
         git config --local user.email "artwl@outlook.com"
         git config --local user.name "artwl"
+        git add .
         git commit -m "resized" -a
     - name: Push changes
       uses: ad-m/github-push-action@master
